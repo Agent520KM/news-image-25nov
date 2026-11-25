@@ -1,0 +1,549 @@
+{"wallet": "85xB32rVHXfchdyTV4qnsAfGtmHY1B9KDrEHA1TARY1"}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wednesday 25 November 2026 — the world in one image</title>
+<style>
+  :root {
+    --ink: #101826;
+    --paper: #e9e0cd;
+    --sheet: #f8f3e6;
+    --rule: #cfc3a8;
+    --sea: #dbe6ee;
+    --land: #c9c1ae;
+    --red: #c8382d;
+    --blue: #1f5fa8;
+    --amber: #c27a12;
+    --green: #2c7a5b;
+    --violet: #6a4aa3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1024px; height: 1024px; overflow: hidden; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    display: grid;
+    grid-template-rows: 84px 30px 194px 286px minmax(0, 1fr) 22px 16px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+
+  header { display: grid; grid-template-columns: 210px 1fr 210px; grid-template-rows: 1fr auto; align-items: center; border-top: 4px solid var(--ink); border-bottom: 3px double var(--ink); padding: 2px 0 4px; }
+  header h1 { grid-column: 2; text-align: center; font-family: Georgia, "Times New Roman", serif; font-size: 44px; line-height: 1; letter-spacing: -.5px; color: var(--ink); }
+  header .deck { grid-column: 1 / -1; text-align: center; font-family: Georgia, serif; font-style: italic; font-size: 17px; color: var(--red); border-top: 1px solid var(--ink); padding-top: 3px; margin: 0 4px; }
+  header .ear { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink); line-height: 1.25; padding: 0 6px; }
+  header .ear b { display: block; font-family: Georgia, serif; font-size: 22px; letter-spacing: 0; text-transform: none; }
+  header .ear.l b { color: var(--red); }
+  header .ear.r { text-align: right; }
+  .ico { display: inline-block; }
+  .ico svg { width: 100%; height: 100%; display: block; }
+  .card { position: relative; }
+  .ico { overflow: hidden; position: relative; }
+  .rep { font-style: italic; font-weight: 600; text-transform: none; letter-spacing: 0; color: #7a8290; }
+  .card[data-n] { border-top-color: var(--c); }
+  .card[data-n] .tag { color: var(--c); }
+  [data-n] .num, [data-n] .let { background: var(--c); }
+  .item[data-n] { border-bottom-color: var(--c); }
+  .item[data-n] h3 small { color: var(--c); }
+  .card .ico { float: right; width: 112px; height: 56px; margin: 6px 0 4px 10px; border-radius: 2px; }
+
+  .bottom { display: grid; grid-template-columns: 372px 1fr; gap: 8px; min-height: 0; }
+  .left { display: grid; grid-template-rows: 142px minmax(0, 1fr) minmax(0, 1fr); gap: 8px; min-height: 0; }
+  .numbers, .markets { min-height: 0; overflow: hidden; padding: 3px 10px !important; gap: 0 8px !important; }
+  .strip { background: var(--sheet); border: 1px solid var(--rule); border-radius: 2px; display: flex; align-items: center; gap: 12px; padding: 0 5px 0 14px; }
+  .lbl2 { font-size: 10.5px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink); white-space: nowrap; flex: none; }
+  .bar { flex: 1; display: flex; height: 21px; border-radius: 4px; overflow: hidden; }
+  .seg { display: flex; align-items: center; justify-content: center; gap: 4px; color: #fff; font-size: 10.5px; font-weight: 700; white-space: nowrap; overflow: hidden; border-right: 2px solid #fff; }
+  .seg:last-child { border-right: 0; }
+  .seg b { font-family: Georgia, serif; font-size: 13.5px; }
+  .key { background: var(--sheet); border: 1px solid var(--rule); border-radius: 2px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 12px; font-size: 10.5px; font-weight: 700; color: #3a4453; white-space: nowrap; }
+  .key i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+  .key b { font-weight: 800; margin-left: 2px; color: var(--ink); }
+  .region { position: absolute; transform: translate(-50%, 0); text-align: center; white-space: nowrap; line-height: 1.1; background: rgba(248,243,230,.9); padding: 1px 5px 2px; border-radius: 3px; }
+  .region.one b, .region.one span { display: inline; margin: 0 2px; }
+  .region b { display: block; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); }
+  .region span { display: block; font-size: 10px; font-weight: 700; color: #3d4a5c; }
+  .map { position: relative; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; background: var(--sea); }
+  .map svg { position: absolute; inset: 0; }
+  .map .legend { position: absolute; left: 8px; bottom: 6px; font-size: 9px; font-weight: 700; letter-spacing: .2px; text-transform: uppercase; color: #3d4a5c; background: rgba(255,255,255,.8); padding: 3px 7px; border-radius: 4px; }
+  .map .title { position: absolute; right: 8px; top: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink); background: rgba(255,255,255,.8); padding: 3px 7px; border-radius: 4px; }
+
+  .brief { background: var(--sheet); border: 1px solid var(--rule); border-radius: 2px; padding: 8px 12px 6px; display: grid; grid-template-rows: auto 1fr; }
+  .brief .hd { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); border-bottom: 2px solid var(--green); padding-bottom: 4px; }
+  .brief { min-height: 0; overflow: hidden; }
+  .brief .cols { min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(8, minmax(0, 1fr)); grid-auto-flow: column; column-gap: 14px; }
+  .brief .b { display: flex; align-items: center; border-bottom: 1px solid #e2d8c2; }
+  .let { flex: none; display: inline-block; width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%; background: var(--green); color: #fff; font-size: 10px; font-weight: 800; margin-right: 7px; }
+  .brief .b div { flex: 1; min-width: 0; line-height: 1.15; }
+  .brief .b small { display: block; font-size: 9px; font-weight: 800; letter-spacing: 1.1px; text-transform: uppercase; color: var(--c); margin-bottom: 1px; }
+  .brief .b span { display: block; font-family: Georgia, serif; font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .numbers { background: var(--sheet); border: 1px solid var(--rule); border-radius: 2px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; align-items: center; padding: 6px 10px; gap: 4px 8px; }
+  .numbers .lbl, .markets .lbl { font-size: 11.5px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; line-height: 1.25; }
+  .numbers .lbl { color: var(--red); }
+  .numbers .m b { display: block; font-family: Georgia, serif; font-size: 18px; line-height: 1.05; color: var(--red); }
+  .numbers .m span { display: block; font-size: 10.5px; line-height: 1.2; color: #3a4453; margin-top: 2px; }
+
+  .lead { display: grid; grid-template-columns: 1.45fr 1fr 1fr; gap: 8px; }
+  .card[data-n="1"] .ico { width: 164px; height: 82px; }
+  .card[data-n="1"] h2 { font-size: 25px; }
+  .card[data-n="1"] .tag::before { content: "Top story · "; }
+  .card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 2px; padding: 9px 13px; border-top: 6px solid var(--red); }
+  .card .tag { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); }
+  .num { font-style: normal; display: inline-block; width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%; background: var(--red); color: #fff; margin-right: 6px; letter-spacing: 0; font-size: 12px; font-weight: 800; }
+  .card h2 { font-family: Georgia, serif; font-size: 20px; line-height: 1.1; margin: 6px 0 6px; }
+  .card p { font-size: 14px; line-height: 1.3; color: #26303f; }
+  .legend b { color: var(--red); } .legend em { font-style: normal; color: var(--blue); } .legend s { text-decoration: none; color: var(--green); }
+
+  .minor { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .item { background: var(--sheet); border: 1px solid var(--rule); border-radius: 2px; border-bottom: 4px solid var(--blue); display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+  .item .ico { order: -1; flex: none; width: 100%; height: 50px; }
+  .item .num { background: var(--blue); width: 18px; height: 18px; line-height: 18px; font-size: 10.5px; margin-right: 4px; vertical-align: 1px; }
+  .item h3 { font-family: Georgia, serif; font-size: 13.5px; line-height: 1.15; padding: 5px 8px 0; }
+  .item h3 small { display: inline-block; font-family: "Helvetica Neue", Arial, sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--blue); margin-bottom: 2px; }
+  .item p { font-size: 11px; line-height: 1.22; color: #3a4453; padding: 2px 8px 0; }
+
+  .markets { background: var(--ink); color: #f8f3e6; border-radius: 2px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; align-items: center; padding: 6px 10px; gap: 4px 8px; }
+  .markets .lbl { color: #ffd27a; }
+  .markets .m b { display: block; font-family: Georgia, serif; font-size: 18px; line-height: 1.05; }
+  .markets .m span { display: block; font-size: 10.5px; opacity: .8; margin-top: 2px; }
+  .down { color: #ff8b7f; } .up { color: #7fd9ad; }
+
+  footer { font-size: 11.5px; color: #5b6472; display: flex; justify-content: space-between; align-items: center; padding: 0 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="ear l"><b>25 Nov 2026</b>Wednesday · UTC</div>
+  <h1>The World in One Day</h1>
+  <div class="ear r"><b>29 stories</b>Ranked by impact</div>
+  <div class="deck">Gulf oil under fire, AI fears sink Asia's stocks, US inflation runs hot</div>
+</header>
+
+<section class="strip" id="where"></section>
+
+<section class="lead">
+  <div class="card" data-n="1">
+    <div class="tag"><i class="num">1</i>Strait of Hormuz</div>
+    <span class="ico" data-i="tanker"></span>
+    <h2>Two oil tankers hit mines and catch fire</h2>
+    <p>Iran's Revolutionary Guards say the ships struck naval mines on an “unauthorised route”. Tehran shrugs off the US naval blockade.</p>
+  </div>
+  <div class="card" data-n="2">
+    <div class="tag"><i class="num">2</i>Saudi Arabia</div>
+    <span class="ico" data-i="refinery"></span>
+    <h2>Houthis strike at Saudi oil</h2>
+    <p>Houthis say they set the 550,000 b/d Ras Tanura refinery ablaze after a Saudi-led strike on Hodeidah. Riyadh says drones were downed.</p>
+  </div>
+  <div class="card" data-n="3">
+    <div class="tag"><i class="num">3</i>Asia markets</div>
+    <span class="ico" data-i="crash"></span>
+    <h2>AI doubts sink Asian markets</h2>
+    <p>Kospi −6.2%, Taiex −4.8% as the AI sell-off returns, despite Jensen Huang's comeback at Nvidia.</p>
+  </div>
+</section>
+
+<section class="minor">
+  <div class="item" data-n="4"><h3><i class="num">4</i><small>Ukraine</small><br>Russian strikes cut power in 5 regions</h3><p>At least 5 killed; leaked data puts Russia's war dead at 490,334+</p><span class="ico" data-i="power"></span></div>
+  <div class="item" data-n="5"><h3><i class="num">5</i><small>Gaza</small><br>Israel kills Hamas security chief</h3><p>Abu al-Awf, his wife and two daughters among 7 killed, officials say</p><span class="ico" data-i="blast"></span></div>
+  <div class="item" data-n="6"><h3><i class="num">6</i><small>Sudan</small><br>RSF drones kill 19 civilians</h3><p>Homes hit in Damazin, Blue Nile state, says Emergency Lawyers.</p><span class="ico" data-i="drone"></span></div>
+  <div class="item" data-n="7"><h3><i class="num">7</i><small>US</small><br>US proposes tariffs on 14 economies</h3><p>China, the EU, Japan and India hit; Mexico and Norway spared</p><span class="ico" data-i="tariff"></span></div>
+  <div class="item" data-n="8"><h3><i class="num">8</i><small>US</small><br>US inflation climbs to 3.8%</h3><p>Core PCE 3.3%, above forecast; Q3 GDP revised up to 4.3%</p><span class="ico" data-i="inflation"></span></div>
+  <div class="item" data-n="9"><h3><i class="num">9</i><small>Libya</small><br>Libyan army vows revenge on Ukraine</h3><p>Two officers died after a drone hit a Russian warship in port</p><span class="ico" data-i="warship"></span></div>
+  <div class="item" data-n="10"><h3><i class="num">10</i><small>Indonesia</small><br>26 trapped in flooded gold mine</h3><p>A river burst into an unlicensed pit in Bogor, West Java</p><span class="ico" data-i="mine"></span></div>
+  <div class="item" data-n="11"><h3><i class="num">11</i><small>China</small><br>Pakistan's first astronaut reaches orbit</h3><p>Zeeshan Ali is the first foreigner on China's Tiangong</p><span class="ico" data-i="rocket"></span></div>
+  <div class="item" data-n="12"><h3><i class="num">12</i><small>Solomons</small><br>Treaty with Australia bars foreign bases</h3><p>Honiara has told China its 2022 security pact will lapse.</p><span class="ico" data-i="treaty"></span></div>
+  <div class="item" data-n="13"><h3><i class="num">13</i><small>Bangladesh</small><br>Garment workers offered 36% pay rise</h3><p>Minimum wage to rise from 12,500 to 17,500 taka a month</p><span class="ico" data-i="shirt"></span></div>
+</section>
+
+<section class="bottom">
+  <div class="left">
+    <div class="map" id="map">
+      <svg id="world" width="372" height="142" viewBox="0 0 372 142"></svg>
+      <div class="legend">Where each story happened</div>
+    </div>
+    <div class="numbers">
+      <div class="lbl">The day<br>in numbers</div>
+      <div class="m"><b>490,334</b><span>Russian war dead, leak</span></div>
+      <div class="m"><b>55%</b><span>US voters: end Iran war</span></div>
+      <div class="m"><b>26</b><span>trapped in Java mine</span></div>
+      <div class="m"><b>19</b><span>killed by drones, Sudan</span></div>
+      <div class="m"><b>36%</b><span>Bangladesh pay offer</span></div>
+    </div>
+    <div class="markets">
+      <div class="lbl">Markets<br>&amp; US data</div>
+      <div class="m"><b class="down">−6.2%</b><span>Kospi, Seoul</span></div>
+      <div class="m"><b class="down">−4.8%</b><span>Taiex, Taipei</span></div>
+      <div class="m"><b class="down">−2.3%</b><span>Nasdaq futures</span></div>
+      <div class="m"><b>3.8%</b><span>US PCE, October</span></div>
+      <div class="m"><b>4.3%</b><span>US Q3 GDP, revised</span></div>
+    </div>
+  </div>
+  <div class="brief">
+    <div class="hd">In brief · 14–29</div>
+    <div class="cols">
+      <div class="b" data-n="14"><i class="let">14</i><div><small>Strait of Hormuz</small><span>Iran says it downed two US drones</span></div></div>
+      <div class="b" data-n="15"><i class="let">15</i><div><small>Cape Town</small><span>Court clears Ramaphosa on Phala Phala</span></div></div>
+      <div class="b" data-n="16"><i class="let">16</i><div><small>Berlin</small><span>Merz: Russia wants more than Ukraine</span></div></div>
+      <div class="b" data-n="17"><i class="let">17</i><div><small>Jerusalem</small><span>Knesset backs PM term-limit bill</span></div></div>
+      <div class="b" data-n="18"><i class="let">18</i><div><small>Brussels</small><span>EU rejects US “overcapacity” tariffs</span></div></div>
+      <div class="b" data-n="19"><i class="let">19</i><div><small>Tehran</small><span>Iran says land trade blunts blockade</span></div></div>
+      <div class="b" data-n="20"><i class="let">20</i><div><small>Washington</small><span>Poll: 55% want Iran war ended now</span></div></div>
+      <div class="b" data-n="21"><i class="let">21</i><div><small>Amman</small><span>Jordan sentences attacker to death</span></div></div>
+      <div class="b" data-n="22"><i class="let">22</i><div><small>Enerhodar</small><span>Zaporizhzhia nuclear plant on diesel</span></div></div>
+      <div class="b" data-n="23"><i class="let">23</i><div><small>Madrid</small><span>Abrego Garcia lands in Spain</span></div></div>
+      <div class="b" data-n="24"><i class="let">24</i><div><small>Berlin</small><span>Germany weighs US troop pullback</span></div></div>
+      <div class="b" data-n="25"><i class="let">25</i><div><small>Brussels</small><span>Puigdemont to return on 12 Dec</span></div></div>
+      <div class="b" data-n="26"><i class="let">26</i><div><small>Vatican City</small><span>Pope laments COP31 failure</span></div></div>
+      <div class="b" data-n="27"><i class="let">27</i><div><small>Sydney</small><span>Inflation runs hotter than expected</span></div></div>
+      <div class="b" data-n="28"><i class="let">28</i><div><small>Tokyo</small><span>Chipmakers dive, Nikkei −2.8%</span></div></div>
+      <div class="b" data-n="29"><i class="let">29</i><div><small>Basingstoke</small><span>Sterling spared jail over driving</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="key" id="what"></section>
+
+<footer>
+  <span>Stories rest on official statements or data; <i class="rep">(report)</i> marks press reports, unnamed sources, NGOs or polls.</span>
+  <span>Sources: Reuters · AP · Al Jazeera · NYT · BBC · Just Security · Newsquawk</span>
+</footer>
+
+<script>
+// Equirectangular projection of a window of the world: lon -152..168, lat 72..-45,
+const W = 372;
+const K = W / 320;
+const H = 142;
+const px = (lon, lat) => [(lon + 152) * K, (72 - lat) * K + 4];
+
+// Coarse coastlines, traced by hand as [lon, lat] pairs.
+const LAND = [
+  // North and Central America
+  [[-165,63],[-150,70],[-125,70],[-95,72],[-80,73],[-62,67],[-55,52],[-66,45],[-70,42],[-76,38],[-76,35],[-81,31],[-80,26],[-81,25],[-83,29],[-89,30],[-95,29],[-97,26],[-97,22],[-94,18],[-90,21],[-87,21],[-88,16],[-83,15],[-83,10],[-79,9],[-77,8],[-80,7],[-85,10],[-92,15],[-105,20],[-110,24],[-112,30],[-117,33],[-124,40],[-124,48],[-130,55],[-140,60],[-152,58],[-165,55]],
+  // Greenland
+  [[-55,60],[-44,60],[-20,70],[-25,74],[-60,76],[-70,76],[-55,68]],
+  // Cuba
+  [[-85,22],[-80,23],[-74,20],[-78,20],[-85,21.5]],
+  // South America
+  [[-77,8],[-72,12],[-62,10],[-52,5],[-50,0],[-35,-5],[-35,-9],[-39,-15],[-41,-22],[-48,-26],[-53,-34],[-58,-38],[-65,-41],[-68,-50],[-70,-56],[-75,-50],[-73,-40],[-71,-30],[-70,-18],[-76,-14],[-81,-6],[-80,0],[-78,4]],
+  // Eurasia with Arabia and India
+  [[-9,43],[-9,37],[-6,36],[-2,37],[0,39],[3,42],[3,43.5],[7,43.5],[9,44],[12,42],[16,38],[16,40],[18.5,40],[13,45],[14,45.5],[20,40],[21,37],[23,36.5],[24,38],[23,40],[26,40.5],[27,37],[28,36.7],[30.5,36.3],[32.5,36.1],[36,36.6],[35.9,35],[35.5,34],[34.5,31.5],[34.9,29.5],[36,27],[39,22],[42,16],[43.5,12.7],[45,13],[52,16],[55,17.5],[59,22.5],[56.5,24],[56,25],[54,24],[51.5,24.5],[51,26],[50,26.5],[48.5,28.5],[48,30],[50,30],[51,28],[54,26.7],[56.3,27.2],[57.5,25.7],[62,25],[67,24.5],[69,22],[72.8,21],[73,16],[75,11],[77.5,8],[80,10],[80,15],[84,19],[87,21.5],[90,22],[92,21],[94,16],[97.5,16.5],[98,8],[100.5,3],[103.5,1.3],[104,2],[101,6],[100,13],[102,12.5],[105,8.6],[109,11.5],[108,16],[106,20],[108,21.5],[111,21],[117,23],[120,26],[122,30],[121,32],[119,35],[122,37],[118,38],[121,40],[124,40],[126,37],[127,35],[129,35],[129.5,37],[128,39],[130,42],[135,43.5],[141,48],[140,53],[137,54],[142,59],[155,59],[162,61],[170,66],[175,67],[175,74],[140,74],[110,77],[80,74],[60,70],[55,69],[42,67],[33,70],[20,71],[10,64],[5,62],[5,58],[8,58],[12,56],[10,54],[8,54],[5,53],[4,51.5],[2,51],[-2,48.5],[-4.5,48],[-1.5,46],[-2,43.5]],
+  // Britain and Ireland
+  [[-5.5,50],[1.5,51],[1.7,52.7],[0,53.5],[-1.5,55],[-2,57.5],[-4,58.6],[-6,58],[-5,55],[-3,54],[-4.5,53],[-5,51.7]],
+  [[-10,51.6],[-6,52],[-6,54.5],[-8,55.2],[-10,54]],
+  // Africa and Madagascar
+  [[-17,21],[-17,15],[-15,11],[-11,7],[-7,4.5],[-2,5],[4,6.3],[8.5,4.5],[9.5,1],[12,-6],[13.5,-12],[12,-17],[15,-27],[18,-34],[22,-34],[27,-33.5],[32.5,-28.5],[35,-24],[35.5,-21],[40.5,-15],[40,-10],[39,-5],[41,-1.5],[51,11.5],[43.5,11.5],[39,15.5],[37,18.5],[35,24],[33.5,28],[32.5,30],[29,31],[25,31.7],[20,32.2],[19,30.3],[15,32.4],[11,33.2],[10,37],[3,36.8],[-2,35.1],[-6,35.8],[-9.5,32],[-10,29],[-13,27.5]],
+  [[44,-25],[47,-25],[50,-15],[49.5,-12],[44.5,-16]],
+  // Japan, Taiwan, Sri Lanka, Philippines
+  [[130,31.5],[131,34],[135,34],[140,35],[141,38],[141.5,41.5],[140,40],[139,38],[136,36.5],[132,35.5],[130,33.5]],
+  [[140,42],[145,43.5],[142,45.5]],
+  [[120.2,22.5],[121.8,24.5],[121.5,25.3],[120,23.5]],
+  [[79.8,6.5],[81.8,7],[80.2,9.8]],
+  [[120,18.5],[122,18.5],[121.5,14],[124,12.5],[126,7],[125.5,6],[122,7],[122,11],[120,14]],
+  // Indonesia and New Guinea
+  [[95.5,5.5],[98,4],[104,-1.5],[106,-6],[102,-4],[97,1.5]],
+  [[105.5,-6.5],[106,-6],[111,-6.5],[114.5,-7.7],[108,-7.8],[105.5,-7]],
+  [[109,1.5],[111,-3],[116,-4],[117.5,1],[119,5],[116.5,7],[113.5,3.5]],
+  [[119,-5.5],[120.5,-5.5],[121,1],[125,1.5],[120,0],[119,-3]],
+  [[131,-1],[134,-3.5],[138,-8],[141,-9],[147,-10.5],[150,-10.5],[145,-5],[141,-2.5],[136,-2]],
+  // Solomon Islands, Australia, New Zealand
+  [[156,-6.5],[159,-8],[162,-10.5],[160.5,-9.5],[157,-7.5]],
+  [[114,-22],[114,-34],[117,-35],[123,-34],[131,-31.5],[137,-34.5],[140,-38],[146,-39],[150,-37.5],[153.5,-28],[153,-25],[146,-19],[142.5,-10.7],[141.5,-17],[136,-12],[130.5,-12.3],[126,-14],[122,-17.5]],
+  [[172.5,-34.5],[178,-38],[175,-41.5],[168,-46.5],[166.5,-46],[171,-42],[174,-39]],
+];
+// Inland seas painted back over the land.
+const WATER = [
+  [[28,41.5],[28,44],[30,46],[33,44.5],[37,45.5],[39.5,47],[41.5,42],[36,41.3],[31,41.1]],
+  [[47,45],[53,47],[54,41],[54,37.5],[49,37.5],[49.5,40.5],[47.5,43]],
+  [[10,54.5],[14,54],[21,55],[22,57.5],[24,59.5],[30,60],[22,60.5],[22,64],[25.5,65.5],[21,66],[17,61],[18.5,59],[16,56.3],[12.5,56]],
+];
+
+// Where each of the 29 stories happened: [story, lon, lat, region, nudge x, nudge y].
+// Pins sit on their place. Where places are closer than a pin is wide (Washington and
+// New York, London and Paris, the Gulf) a pin is nudged a few pixels, staying over the
+// right country, so every number can be read.
+const PLACES = [
+  [1, 56.3, 26.6, "Middle East", 1.9, -0.8], [2, 50.2, 26.7, "Middle East", -2, 3.3],
+  [3, 127.0, 37.6, "Asia"], [4, 30.5, 50.4, "Europe", -2.2, -2.1],
+  [5, 34.4, 31.5, "Middle East", -6.7, 3.9], [6, 34.4, 11.8, "Africa"],
+  [7, -77.0, 38.9, "Americas", -5.2, -4.5], [8, -77.0, 38.9, "Americas", 5.8, -4.5],
+  [9, 20.1, 32.1, "Africa", -1.1, 1.6], [10, 106.8, -6.6, "Asia"],
+  [11, 98.5, 39.7, "Asia"], [12, 160.0, -9.4, "Oceania"],
+  [13, 90.4, 23.8, "Asia"], [14, 56.3, 26.6, "Middle East", 9.9, 9.2],
+  [15, 18.4, -33.9, "Africa"], [16, 13.4, 52.5, "Europe", 1.7, -5.7],
+  [17, 35.2, 31.8, "Middle East", -5.6, -6.7], [18, 4.35, 50.85, "Europe", -0.8, -6.6],
+  [19, 51.4, 35.7, "Middle East", -0.4, -2.2], [20, -77.0, 38.9, "Americas", 0.8, 5.5],
+  [21, 35.9, 31.95, "Middle East", 5.6, 1.4], [22, 34.6, 47.5, "Europe", 5, 1.5],
+  [23, -3.7, 40.4, "Europe", 1.6, 1.3], [24, 13.4, 52.5, "Europe", 3.7, 5.3],
+  [25, 4.35, 50.85, "Europe", 2.2, 4.4], [26, 12.45, 41.9, "Europe", -1.2, 4],
+  [27, 151.2, -33.9, "Oceania"], [28, 139.7, 35.7, "Asia"],
+  [29, -1.1, 51.3, "Europe", -5.4, -2.1],
+];
+const REGION_ORDER = ["Europe", "Americas", "Middle East", "Asia", "Africa", "Oceania"];
+
+const svg = document.getElementById("world");
+const NS = "http://www.w3.org/2000/svg";
+const add = (tag, attrs) => {
+  const el = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  svg.appendChild(el);
+  return el;
+};
+const pathOf = (ring) => "M" + ring.map(([lo, la]) => px(lo, la).map((n) => n.toFixed(1)).join(",")).join("L") + "Z";
+
+// Graticule every 30 degrees.
+for (let lon = -90; lon <= 150; lon += 30) {
+  const [x] = px(lon, 0);
+  add("line", { x1: x, y1: 0, x2: x, y2: H, stroke: "#c6d4df", "stroke-width": 1 });
+}
+for (let lat = -30; lat <= 60; lat += 30) {
+  const [, y] = px(0, lat);
+  add("line", { x1: 0, y1: y, x2: W, y2: y, stroke: "#c6d4df", "stroke-width": 1 });
+}
+for (const ring of LAND) add("path", { d: pathOf(ring), fill: "#cfc6b2", stroke: "#a99f88", "stroke-width": 1 });
+for (const ring of WATER) add("path", { d: pathOf(ring), fill: "#dbe6ee", stroke: "#a99f88", "stroke-width": 1 });
+
+// Little scenes of what happened in stories 1-13, drawn on a 96x48 stage.
+// The tiles crop them to a wide strip, so each scene keeps its action in the middle band.
+const FONT = 'font-family="Helvetica Neue, Arial, sans-serif"';
+const flame = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})">
+  <path d="M0 0c-3.5 0-5-2.6-4.6-5.4.4-2.6 2.6-3.6 2.8-7.6 2 1.6 2.2 3.4 2 4.8 1-.6 1.6-2 1.8-3.4 2.4 2 3.4 4.4 3 6.6C4.6-2.2 3 0 0 0z" fill="#f08a24"/>
+  <path d="M0 0c-1.7 0-2.6-1.2-2.4-2.8.2-1.4 1.4-2 1.6-4 1.2 1 1.4 2 1.2 3 .6-.4 1-1 1.2-1.8 1.2 1.2 1.6 2.4 1.4 3.4C2.8-.8 1.6 0 0 0z" fill="#ffd25a"/></g>`;
+const smoke = (x, y, s = 1, c = "#7b746d") => `<g fill="${c}" opacity=".85" transform="translate(${x} ${y}) scale(${s})">
+  <circle r="4"/><circle cx="3" cy="-5" r="5"/><circle cx="7.5" cy="-11" r="6"/><circle cx="13" cy="-17" r="6.5"/></g>`;
+const waves = (y, o = 0.55) => `<path d="M0 ${y}${" c2 -1 3 1 5 0 s3 1 5 0".repeat(10)}" stroke="#fff" stroke-opacity="${o}" stroke-width=".8" fill="none"/>`;
+// A delta-wing attack drone pointing along +x, turned by angle a.
+const drone = (x, y, s = 1, a = 0) => `<g transform="translate(${x} ${y}) rotate(${a}) scale(${s})">
+  <path d="M-5 0L4-1.3 5.2 0 4 1.3z M1-.5L-2-4.5H0L3.2-.5z M1 .5L-2 4.5H0L3.2 .5z" fill="#2b2f38"/><circle cx="4.4" r=".7" fill="#ff4b3e"/></g>`;
+// An explosion: a spiky star in two colours.
+const burst = (x, y, r) => {
+  const pts = (rad) => Array.from({ length: 24 }, (_, i) => {
+    const a = (i * Math.PI) / 12, k = i % 2 ? 0.5 : 1;
+    return `${(x + Math.cos(a) * rad * k).toFixed(1)},${(y + Math.sin(a) * rad * k).toFixed(1)}`;
+  }).join(" ");
+  return `<polygon points="${pts(r)}" fill="#f08a24"/><polygon points="${pts(r * 0.6)}" fill="#ffd25a"/>`;
+};
+const person = (x, y, c, hat) => `<g fill="${c}"><circle cx="${x}" cy="${y - 6.4}" r="1.5"/>
+  <path d="M${x - 1.7} ${y}v-4.2a1.7 1.7 0 0 1 3.4 0V${y}z"/>${hat ? `<path d="M${x - 1.8} ${y - 6.8}a1.8 1.8 0 0 1 3.6 0z" fill="${hat}"/>` : ""}</g>`;
+// A grid of windows; `lit` lists which ones glow.
+const windows = (x, y, cols, rows, lit = [], dark = "#1a2234") => {
+  let s = "";
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const on = lit.includes(r * cols + c);
+    s += `<rect x="${x + c * 3.2}" y="${y + r * 3.6}" width="1.8" height="2" fill="${on ? "#ffd25a" : dark}"/>`;
+  }
+  return s;
+};
+const stars = (list) => list.map(([x, y]) => `<circle cx="${x}" cy="${y}" r=".5" fill="#fff" opacity=".8"/>`).join("");
+const tanker = (x, y, len) => `<path d="M${x} ${y}h${len}l-2.5 5H${x + 2.5}z" fill="#3a2f2f"/>
+  <path d="M${x + 1} ${y + 1.6}h${len - 2}" stroke="#c8382d" stroke-width="1"/>
+  <rect x="${x + 3}" y="${y - 1.5}" width="${len * 0.6}" height="1.5" fill="#5b6270"/>
+  <rect x="${x + len - 9}" y="${y - 6}" width="6" height="6" fill="#f4f1ea"/><rect x="${x + len - 8}" y="${y - 5}" width="4" height="1.2" fill="#1d4a73"/>
+  <rect x="${x + len - 6.6}" y="${y - 8.5}" width="1.8" height="2.5" fill="#c8382d"/>`;
+const seaMine = (x, y) => `<g stroke="#222" stroke-width=".9"><path d="M${x} ${y - 4}v8M${x - 4} ${y}h8M${x - 2.8} ${y - 2.8}l5.6 5.6M${x + 2.8} ${y - 2.8}l-5.6 5.6"/></g><circle cx="${x}" cy="${y}" r="2.6" fill="#2a2a2a"/>`;
+const tank = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#d3d8df"/><ellipse cx="${x + w / 2}" cy="${y}" rx="${w / 2}" ry="1.6" fill="#eef0f3"/>
+  <path d="M${x} ${y + h / 2}h${w}" stroke="#b5bcc6" stroke-width=".6"/>`;
+const box = (x, y, c, label = "") => `<rect x="${x}" y="${y}" width="15" height="6.4" fill="${c}"/>
+  <path d="M${x + 3} ${y}v6.4M${x + 6} ${y}v6.4M${x + 9} ${y}v6.4M${x + 12} ${y}v6.4" stroke="#000" stroke-opacity=".18" stroke-width=".6"/>
+  ${label ? `<text x="${x + 7.5}" y="${y + 4.7}" text-anchor="middle" font-size="4.4" font-weight="800" fill="#fff" ${FONT}>${label}</text>` : ""}`;
+
+const SCENES = {
+  // 1: two tankers hit sea mines in the Strait of Hormuz and burn.
+  tanker: `<rect width="96" height="48" fill="#f7d6b2"/><circle cx="84" cy="9" r="5" fill="#f4a261" opacity=".8"/>
+    <path d="M0 27Q10 20 20 25T44 26L46 29H0z" fill="#c9a27a"/>
+    ${smoke(33, 20, 1.15, "#5f5853")}${smoke(79, 25, 0.7, "#5f5853")}
+    <rect y="29" width="96" height="19" fill="#2f6fa3"/>
+    ${tanker(20, 28, 42)}${tanker(70, 30, 22)}
+    ${flame(32, 26.5, 1.3)}${flame(40, 26.5, 0.9)}${flame(79, 28.5, 0.8)}
+    <path d="M24 34l-2.5-5 3.5 3 1-5 1.2 5 3-3-2 5z" fill="#fff" opacity=".9"/>
+    ${seaMine(11, 38)}${waves(39)}${waves(44, 0.35)}`,
+  // 2: Houthi drones hit the Ras Tanura refinery; fire and smoke, one drone shot down.
+  refinery: `<rect width="96" height="48" fill="#f3cfa8"/>
+    ${smoke(27, 18, 1.4, "#55504c")}
+    <rect y="38" width="96" height="10" fill="#d9c08f"/>
+    <rect x="6" y="15" width="5" height="23" fill="#9aa1ab"/><path d="M6 21h5M6 27h5M6 33h5" stroke="#7d848e" stroke-width=".8"/>
+    <rect x="14" y="9" width="1.6" height="29" fill="#7d848e"/>${flame(14.8, 9, 0.45)}
+    ${tank(20, 28, 14, 10)}${tank(38, 30, 12, 8)}${tank(54, 29, 12, 9)}
+    <path d="M11 35h9M34 35h4M50 35h4" stroke="#8a9099" stroke-width="1.2"/>
+    ${burst(27, 27, 9)}${flame(27, 29, 1.7)}
+    ${drone(76, 12, 1.4, 180)}${drone(88, 20, 1.1, 185)}
+    <path d="M83 12h13M94 20h2" stroke="#2b2f38" stroke-dasharray="1.4 1.4" stroke-width=".6"/>
+    ${burst(64, 8, 3.2)}<circle cx="64" cy="8" r="1.2" fill="#fff"/>`,
+  // 3: AI doubts sink Asian markets: a trading screen in the red.
+  crash: `<rect width="96" height="48" fill="#1c2433"/>
+    <path d="M0 12h96M0 24h96M0 36h96M24 0v48M48 0v48M72 0v48" stroke="#2c3850" stroke-width=".6"/>
+    <polygon points="4,10 14,8 22,14 30,12 40,20 50,22 58,30 68,32 78,38 90,42 90,48 4,48" fill="#ff5c4d" opacity=".15"/>
+    <polyline points="4,10 14,8 22,14 30,12 40,20 50,22 58,30 68,32 78,38 90,42" fill="none" stroke="#ff5c4d" stroke-width="1.6"/>
+    <g transform="translate(76 5)"><rect width="15" height="15" rx="2" fill="#3a4660" stroke="#9fb0c8" stroke-width=".8"/>
+      <path d="M3-2v2M7.5-2v2M12-2v2M3 15v2M7.5 15v2M12 15v2" stroke="#9fb0c8" stroke-width=".8"/>
+      <text x="7.5" y="10" font-size="6.5" font-weight="800" fill="#fff" text-anchor="middle" ${FONT}>AI</text>
+      <path d="M4 1l3 5-2.5 2.5 4.5 6" stroke="#ff5c4d" stroke-width="1.1" fill="none"/></g>
+    <text x="5" y="37" font-size="6.5" font-weight="800" fill="#ff8b7f" ${FONT}>KOSPI −6.2%</text>
+    <text x="5" y="45" font-size="6.5" font-weight="800" fill="#ff8b7f" ${FONT}>TAIEX −4.8%</text>`,
+  // 4: Russian strikes knock out power: dark tower blocks, a burning flat, a downed line.
+  power: `<rect width="96" height="48" fill="#1b2640"/>${stars([[8, 5], [20, 9], [46, 4], [58, 10], [88, 14], [30, 3]])}
+    <circle cx="86" cy="7" r="4" fill="#f3e6b3"/><circle cx="88" cy="6" r="3.4" fill="#1b2640"/>
+    <path d="M66 0L50 14" stroke="#ffb35c" stroke-width="1"/><circle cx="50" cy="14" r="1.3" fill="#ffd25a"/>
+    <rect x="4" y="18" width="16" height="30" fill="#34425f"/>${windows(6, 21, 4, 7, [9])}
+    <rect x="22" y="12" width="18" height="36" fill="#2b3753"/>${windows(24, 15, 5, 9, [])}
+    ${smoke(33, 16, 0.7, "#55504c")}${flame(33, 20, 0.8)}
+    <rect x="42" y="22" width="14" height="26" fill="#34425f"/>${windows(44, 25, 4, 6, [2])}
+    <path d="M66 48L70 22 74 48M67.5 38h5M68.5 30h3M64 24h12" stroke="#8d97aa" stroke-width="1" fill="none"/>
+    <path d="M64 24Q58 28 57 35M76 24Q86 26 96 25" stroke="#8d97aa" stroke-width=".7" fill="none"/>
+    ${burst(57, 35, 3)}<rect y="45" width="96" height="3" fill="#141c30"/>`,
+  // 5: an Israeli strike flattens a building in Gaza City.
+  blast: `<rect width="96" height="48" fill="#ecc9a6"/>
+    ${smoke(44, 18, 1.4, "#5e5853")}
+    <path d="M86 0L52 20" stroke="#6b6560" stroke-width=".8" stroke-dasharray="2 1.5"/>
+    <rect y="40" width="96" height="8" fill="#c8b08c"/>
+    <rect x="4" y="20" width="14" height="20" fill="#b5a58c"/>${windows(6, 23, 4, 4, [], "#6d6253")}
+    <rect x="20" y="14" width="12" height="26" fill="#a99a82"/>${windows(22, 17, 3, 6, [], "#6d6253")}
+    ${burst(43, 27, 11)}
+    <path d="M34 40L36 31 40 34 43 27 47 32 50 29 52 40z" fill="#8f8270"/>
+    <rect x="55" y="18" width="14" height="22" fill="#b5a58c"/>${windows(57, 21, 4, 5, [], "#6d6253")}
+    <rect x="71" y="24" width="21" height="16" fill="#a99a82"/>${windows(73, 27, 6, 3, [], "#6d6253")}
+    <circle cx="30" cy="36" r=".9" fill="#6d6253"/><circle cx="56" cy="37" r="1" fill="#6d6253"/><circle cx="53" cy="33" r=".7" fill="#6d6253"/>`,
+  // 6: RSF drones strike homes in Damazin, Sudan.
+  drone: `<rect width="96" height="48" fill="#f2dfb8"/><circle cx="84" cy="9" r="5.5" fill="#f6c27a"/>
+    <path d="M0 36Q24 32 48 35T96 34V48H0z" fill="#d4ad78"/>
+    ${smoke(53, 22, 1, "#6e655b")}
+    <rect x="6" y="28" width="14" height="10" fill="#b98a57"/><rect x="11" y="32" width="3" height="6" fill="#5a3f26"/>
+    <rect x="25" y="29" width="12" height="9" fill="#c49764"/><rect x="29" y="33" width="3" height="5" fill="#5a3f26"/>
+    <rect x="44" y="27" width="17" height="11" fill="#b98a57"/>${burst(52, 28, 6)}${flame(52, 29, 1.1)}
+    <rect x="66" y="29" width="12" height="9" fill="#c49764"/><rect x="70" y="33" width="3" height="5" fill="#5a3f26"/>
+    <path d="M88 38q-1-8 1-15" stroke="#7a5a35" stroke-width="1.2" fill="none"/>
+    <path d="M89 23q-5-1-7 2M89 23q4-2 7 0M89 23q-2-4-6-4M89 23q3-4 6-3" stroke="#3f7f4a" stroke-width="1.4" fill="none"/>
+    ${drone(30, 17, 1.5, 200)}${drone(66, 15, 1.3, 195)}
+    <path d="M37 19.5l8 3M72.5 16.5l8 2" stroke="#2b2f38" stroke-dasharray="1.4 1.4" stroke-width=".6"/>`,
+  // 9: a Ukrainian drone hit a Russian warship in an eastern Libyan port; Libya's army vows revenge.
+  warship: `<rect width="96" height="48" fill="#dbe7f0"/>
+    <path d="M60 30Q75 22 96 26V30z" fill="#c9b48f"/>
+    <rect y="30" width="96" height="18" fill="#3c7bb0"/>
+    <rect y="25" width="16" height="23" fill="#9a9a94"/><path d="M6 25V7h14M18 7v8" stroke="#e0a526" stroke-width="1.4" fill="none"/>
+    <path d="M22 30h50l-4 6H26z" fill="#6f7a87"/><rect x="36" y="22" width="16" height="8" fill="#8a95a2"/>
+    <rect x="39" y="24" width="10" height="1.4" fill="#2b3753"/><path d="M44 22v-9M41 15h6M58 28h8" stroke="#55606d" stroke-width="1.1"/>
+    ${smoke(57, 20, 0.8, "#5f5853")}${burst(56, 26, 6)}${flame(56, 29, 0.9)}
+    ${drone(68, 17, 1.4, 145)}<path d="M74 13l14-10" stroke="#2b2f38" stroke-dasharray="1.4 1.4" stroke-width=".6"/>
+    ${waves(39)}${waves(44, 0.35)}`,
+  // 8: US inflation climbs to 3.8% as growth is revised up to 4.3%.
+  inflation: `<rect width="96" height="48" fill="#f6ead8"/><path d="M4 36h88" stroke="#c9b89c" stroke-width=".8"/>
+    ${[[8, 6], [16, 9], [24, 12], [32, 16], [40, 21]].map(([x, h]) => `<rect x="${x}" y="${36 - h}" width="6" height="${h}" fill="#c8382d" opacity="${0.45 + h / 40}"/>`).join("")}
+    <path d="M9 28L19 25 27 22 35 18 44 12" stroke="#101826" stroke-width="1.1" fill="none"/><path d="M40.5 11.5l3.6.4-.9 3.4" stroke="#101826" stroke-width="1.1" fill="none"/>
+    <text x="52" y="17" font-size="5.5" font-weight="800" fill="#101826" ${FONT}>US PCE</text>
+    <text x="52" y="28.5" font-size="12" font-weight="900" fill="#c8382d" ${FONT}>3.8%</text>
+    <text x="52" y="35" font-size="5.5" font-weight="800" fill="#1f5fa8" ${FONT}>GDP +4.3%</text>
+    <rect x="88" y="11" width="3.4" height="20" rx="1.7" fill="#fff" stroke="#8a8f99" stroke-width=".6"/>
+    <rect x="88.9" y="17" width="1.6" height="14" fill="#c8382d"/><circle cx="89.7" cy="32.5" r="3" fill="#c8382d"/>`,
+  // 7: the US proposes tariffs on 14 economies, China and the EU among them.
+  tariff: `<rect width="96" height="48" fill="#dceaf3"/>
+    <rect y="40" width="96" height="8" fill="#3c7bb0"/><rect y="35" width="70" height="5" fill="#9a9a94"/>
+    ${box(6, 28.6, "#c8382d", "CN")}${box(22, 28.6, "#1f5fa8", "EU")}${box(38, 28.6, "#2c7a5b", "+12")}
+    ${box(6, 22.2, "#e0a526")}${box(22, 22.2, "#c8382d")}${box(38, 22.2, "#1f5fa8")}
+    ${box(14, 15.8, "#2c7a5b")}${box(30, 15.8, "#e0a526")}
+    <path d="M58 35V5h24M78 5v9M58 12l7-7" stroke="#e0a526" stroke-width="1.6" fill="none"/><rect x="75" y="14" width="6" height="3" fill="#55606d"/>
+    <circle cx="80" cy="28" r="8" fill="#c8382d"/><text x="80" y="31.6" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" ${FONT}>%</text>
+    <path d="M90 33V21M86.5 24.5L90 20.5l3.5 4" stroke="#c8382d" stroke-width="1.8" fill="none" stroke-linecap="round"/>`,
+  // 10: a river bursts into an unlicensed gold mine in West Java, trapping 26.
+  mine: `<rect width="96" height="48" fill="#9fb1c0"/>
+    ${Array.from({ length: 22 }, (_, i) => `<path d="M${(i * 9) % 96 + 2} ${(i * 7) % 20}l-1.5 4" stroke="#e8f0f6" stroke-width=".6" opacity=".8"/>`).join("")}
+    <path d="M0 22H30L38 41H62L70 22H96V48H0z" fill="#7a5532"/>
+    <path d="M30 22L38 41H62L70 22" fill="none" stroke="#5d3f22" stroke-width="1"/>
+    <path d="M35 30H66L62.5 41H38.5z" fill="#9c7a45"/>
+    <path d="M0 20Q12 17 22 20T32 23" stroke="#5d8fb8" stroke-width="3.2" fill="none"/>
+    <path d="M30 22Q34 25 35.5 30" stroke="#5d8fb8" stroke-width="2.4" fill="none"/>
+    <path d="M38 32c2-1 3 1 5 0s3 1 5 0 3 1 5 0 3 1 5 0 3 1 5 0" stroke="#c9ab74" stroke-width=".7" fill="none"/>
+    <path d="M47 33.5a2.6 2.6 0 0 1 5.2 0z" fill="#ffd25a"/>
+    <path d="M75 16Q70 25 58 32" stroke="#e8e0c8" stroke-width=".8" fill="none"/>
+    ${person(76, 22, "#2b3753", "#ffd25a")}${person(82, 22, "#2b3753", "#ffd25a")}${person(88, 22, "#c8382d", "#ffd25a")}
+    <circle cx="8" cy="22" r="4" fill="#3f7f4a"/><circle cx="14" cy="21" r="3" fill="#4d9159"/>`,
+  // 11: Pakistan's first astronaut rides a Chinese rocket to the Tiangong station.
+  rocket: `<rect width="96" height="48" fill="#121b33"/>${stars([[6, 6], [18, 12], [30, 4], [60, 6], [70, 18], [90, 30], [12, 28], [52, 14]])}
+    <ellipse cx="40" cy="74" rx="72" ry="32" fill="#2f6fa3"/><path d="M8 46Q20 42 30 45T52 44" fill="#3f8f5a"/>
+    <path d="M30 46Q36 30 47 20" stroke="#fff" stroke-opacity=".45" stroke-width="2.4" fill="none"/>
+    <path d="M50 18Q66 4 78 10" stroke="#ffd25a" stroke-width=".7" stroke-dasharray="1.6 1.6" fill="none"/>
+    <g transform="translate(49 18) rotate(35)"><path d="M0-9c2.6 2 3.4 5.6 3.4 9L2 3H-2L-3.4 0c0-3.4.8-7 3.4-9z" fill="#f4f1ea"/>
+      <rect x="-3.4" y="-2" width="6.8" height="1.6" fill="#c8382d"/><circle cy="-4" r="1.1" fill="#1f5fa8"/>
+      <path d="M-3.2 0L-5.5 4H-2.2M3.2 0l2.3 4H2.2" fill="#c8382d"/>${flame(0, 8, 0.6).replace("translate(0 8)", "translate(0 8) rotate(180)")}</g>
+    <g transform="translate(80 10)"><rect x="-5" y="-1.5" width="10" height="3" fill="#d9dde3"/><rect x="-1.5" y="-5" width="3" height="10" fill="#d9dde3"/>
+      <rect x="-13" y="-3" width="7" height="6" fill="#1f5fa8"/><rect x="6" y="-3" width="7" height="6" fill="#1f5fa8"/></g>`,
+  // 12: a Solomon Islands–Australia treaty rules out foreign military bases.
+  treaty: `<rect width="96" height="48" fill="#9fd0e6"/>${waves(40)}${waves(45, 0.35)}
+    <path d="M0 36Q12 22 30 36z" fill="#3f8f5a"/><path d="M16 27q-1-7 1-12" stroke="#7a5a35" stroke-width="1.1" fill="none"/>
+    <path d="M17 15q-4-1-6 2M17 15q3-2 6 0M17 15q-1-3-5-3M17 15q2-3 5-2" stroke="#2f6b3c" stroke-width="1.3" fill="none"/>
+    <path d="M70 36Q80 24 96 27V36z" fill="#d9a35b"/>
+    <rect x="37" y="8" width="22" height="30" fill="#fbf4e2" stroke="#c9b98f" stroke-width=".8"/>
+    <path d="M41 14h14M41 18h14M41 22h14M41 26h9" stroke="#b5a57d" stroke-width=".9"/>
+    <path d="M51 33l-1.5 6 2.5-1.5 2.5 1.5-1.5-6" fill="#c8382d"/><circle cx="52.5" cy="32" r="3" fill="#c8382d"/>
+    <g transform="translate(80 13)"><circle r="7" fill="#fff" stroke="#c8382d" stroke-width="1.6"/>
+      <path d="M-3 4V-4M-3-4h5l-1 1.5 1 1.5h-5" stroke="#55606d" stroke-width="1" fill="#55606d"/><path d="M-5 5l10-10" stroke="#c8382d" stroke-width="1.6"/></g>`,
+  // 13: Bangladesh's garment workers win a 36% pay offer after weeks of protest.
+  shirt: `<rect width="96" height="48" fill="#f3e6da"/><rect y="40" width="96" height="8" fill="#cdbfae"/>
+    <path d="M4 22l8-6v6l8-6v6l8-6v6l8-6v6V40H4z" fill="#b8bec8"/><rect x="30" y="8" width="3" height="10" fill="#9aa1ab"/>
+    ${windows(7, 26, 8, 3, [], "#6f7885")}
+    ${person(44, 40, "#1f5fa8")}${person(50, 40, "#c8382d")}${person(56, 40, "#2c7a5b")}${person(62, 40, "#e0a526")}
+    <rect x="46" y="24" width="10" height="6" fill="#fff" stroke="#55606d" stroke-width=".6"/><path d="M51 30v4" stroke="#55606d" stroke-width=".6"/>
+    <rect x="58" y="22" width="9" height="6" fill="#fff" stroke="#55606d" stroke-width=".6"/><path d="M62.5 28v6" stroke="#55606d" stroke-width=".6"/>
+    <path d="M86 38V14M80 20l6-7 6 7" stroke="#2c7a5b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="79" y="32" text-anchor="end" font-size="9" font-weight="900" fill="#2c7a5b" ${FONT}>36%</text>`,
+};
+for (const el of document.querySelectorAll(".ico")) {
+  el.innerHTML = `<svg viewBox="0 0 96 48" preserveAspectRatio="xMidYMid slice">${SCENES[el.dataset.i]}</svg>`;
+}
+
+// Every story gets a category, shown in that category's colour, and the kind of source
+// behind it: "off" is an on-record statement from a government, court, military or agency,
+// or official data; "rep" is a press report, unnamed sources, an NGO or a poll.
+const COLOURS = {
+  Conflict: "#c8382d", Security: "#7b3fa0", Economy: "#1f5fa8", Politics: "#0f7c86",
+  Justice: "#8a5a2b", Disaster: "#d9731a", Space: "#3446a8", Diplomacy: "#2c7a5b",
+  Energy: "#b38600", Health: "#c2407a", Climate: "#4f8a1f", Migration: "#5b6472", Sport: "#3d8fc4",
+};
+const META = {
+  1: ["Conflict", "off"], 2: ["Conflict", "off"], 3: ["Economy", "off"], 4: ["Conflict", "off"],
+  5: ["Conflict", "off"], 6: ["Conflict", "rep"], 7: ["Economy", "off"], 8: ["Economy", "off"],
+  9: ["Conflict", "off"], 10: ["Disaster", "off"], 11: ["Space", "off"], 12: ["Diplomacy", "off"],
+  13: ["Economy", "off"], 14: ["Conflict", "off"], 15: ["Justice", "off"], 16: ["Security", "off"],
+  17: ["Politics", "off"], 18: ["Economy", "off"], 19: ["Economy", "off"], 20: ["Politics", "rep"],
+  21: ["Justice", "off"], 22: ["Energy", "off"], 23: ["Migration", "off"], 24: ["Security", "rep"],
+  25: ["Politics", "off"], 26: ["Climate", "off"], 27: ["Economy", "off"], 28: ["Economy", "off"],
+  29: ["Sport", "off"],
+};
+// The colour carries the category; the category's name joins the story's place line,
+// and only stories resting on a report get a quiet "(report)" mark.
+for (const el of document.querySelectorAll("[data-n]")) {
+  const [cat, src] = META[el.dataset.n];
+  el.style.setProperty("--c", COLOURS[cat]);
+  const mark = src === "rep" ? ` <i class="rep">(report)</i>` : "";
+  const line = el.querySelector(".tag") || el.querySelector("small");
+  line.insertAdjacentHTML("beforeend", ` · ${cat}${mark}`);
+}
+
+// The row under the header: a bar split by region, each part as wide as its share of stories
+// (plus a small fixed width so the smallest regions can still hold their names).
+const counts = Object.fromEntries(REGION_ORDER.map((r) => [r, 0]));
+for (const p of PLACES) counts[p[3]]++;
+const SHADES = ["#101826", "#2b3a55", "#46597a", "#62769a", "#8798b4", "#b0bccf"];
+document.getElementById("where").innerHTML = `<span class="lbl2">Where the ${PLACES.length} stories happened</span><div class="bar">` +
+  REGION_ORDER.map((r, i) => `<span class="seg" style="flex:${counts[r] + 1.5};background:${SHADES[i]}${i > 3 ? ";color:#101826" : ""}"><b>${counts[r]}</b>${r}</span>`).join("") + `</div>`;
+const byCat = {};
+for (const [cat] of Object.values(META)) byCat[cat] = (byCat[cat] || 0) + 1;
+// The row at the foot: what each colour means, and how many stories carry it.
+document.getElementById("what").innerHTML = `<span class="lbl2">Colour key</span>` +
+  Object.keys(COLOURS).filter((c) => byCat[c]).sort((a, b) => byCat[b] - byCat[a])
+    .map((c) => `<span><i style="background:${COLOURS[c]}"></i>${c}<b>${byCat[c]}</b></span>`).join("");
+
+// One pin per story, on its place, in its category's colour.
+for (const [n, lon, lat, , nx = 0, ny = 0] of PLACES) {
+  const [x0, y0] = px(lon, lat);
+  const x = x0 + nx, y = y0 + ny;
+  add("circle", { cx: x, cy: y, r: 5.4, fill: COLOURS[META[n][0]], stroke: "#fff", "stroke-width": 1.1 });
+  const t = add("text", { x, y: y + 2.4, "text-anchor": "middle", "font-size": 6.8, "font-weight": 800, fill: "#fff", "font-family": "Helvetica Neue, Arial, sans-serif" });
+  t.textContent = n;
+}
+</script>
+</body>
+</html>
